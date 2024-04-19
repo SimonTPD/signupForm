@@ -1,0 +1,53 @@
+:root{
+    --content-height: 100vh;
+}
+
+body{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/*Main div*/
+div.main{
+    width: 50%;
+    height: var(--content-height);
+    
+    
+    border: 1px solid blue;
+}
+
+div.main > *:first-child{
+    margin-top: calc(var(--content-height) * 0.2);
+}
+
+div.main > *:nth-last-child(n + 2){
+    margin-bottom: calc(var(--content-height) * 0.05);
+}
+
+div.main > *{
+    padding: 4px 16px;
+}
+
+/* Side div*/
+div.side-content{
+    width: 25%;
+    height: var(--content-height);
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+
+    background-image: url("./img/angkorWat.jpg");
+    background-size: 100% 100%;
+}
+
+div.side-content > div.side-logo{
+    margin: calc(var(--content-height) * 0.2) 0;
+}
+
+div.side-content > p{
+    text-align: center;
+}
