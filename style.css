@@ -1,39 +1,89 @@
+/*Meyer reset*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+/* General */
 :root{
-    --content-height: 100vh;
+    --div-first-child-min-top-margin: 0px;   
+    --div-first-child-max-top-margin: 100px;
+}
+
+@font-face {
+    font-family: ;
+    src: url();
 }
 
 body{
+    font-family: system-ui;
+}
+
+/* Header */
+h1{
+    max-width: 1500px;
+    margin: 8px auto 20px;
+
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/*Main div*/
+div.main{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
 }
 
-/*Main div*/
-div.main{
-    width: 50%;
-    height: var(--content-height);
-    
-    
-    border: 1px solid blue;
+/*Center div*/
+div.center-content{
+    width: 500px;
+    max-width: 1000px;
+    /*Same height as div.side-content to preserve image ratio*/
+    height: min(calc(100vw * (1 / 3) * 1.48), 740px);
+    /*This div is twice as big as the side div*/
+    flex: 2 1 auto;
 }
 
-div.main > *:first-child{
-    margin-top: calc(var(--content-height) * 0.2);
+div.center-content > *:first-child{
+    margin-top: clamp(var(--div-first-child-min-top-margin), 
+        calc(15vw - 120px),
+        var(--div-first-child-max-top-margin));
 }
 
-div.main > *:nth-last-child(n + 2){
-    margin-bottom: calc(var(--content-height) * 0.05);
+div.center-content > *:nth-last-child(n + 2){
+    margin-bottom: 16px;
 }
 
-div.main > *{
+div.center-content > *{
     padding: 4px 16px;
 }
 
-/* Side div*/
+/*Side div*/
 div.side-content{
-    width: 25%;
-    height: var(--content-height);
+    width: 250px;
+    max-width: 500px;
+    /*This is to preserve the image ratio of height/width = 1.48*/
+    height: min(calc(100vw * (1 / 3) * 1.48), 740px);
+    /*This div is twice smaller than the center div*/
+    flex: 1 1 auto;
     
     display: flex;
     flex-direction: column;
@@ -45,7 +95,9 @@ div.side-content{
 }
 
 div.side-content > div.side-logo{
-    margin: calc(var(--content-height) * 0.2) 0;
+    margin-top: clamp(var(--div-first-child-min-top-margin), 
+    calc(15vw - 120px),
+    var(--div-first-child-max-top-margin));
 }
 
 div.side-content > p{
