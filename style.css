@@ -1,4 +1,6 @@
+/******************************************************/
 /*Meyer reset*/
+/******************************************************/
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -20,31 +22,57 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
+/******************************************************/
 /* General */
+/******************************************************/
 :root{
     --div-first-child-min-top-margin: 0px;   
     --div-first-child-max-top-margin: 100px;
 }
 
 @font-face {
-    font-family: ;
-    src: url();
+    font-family: "kaushanscript-regular";
+    src:
+        url("./font/kaushanscript-regular-webfont.woff2") format("woff2"), 
+        url("./font/kaushanscript-regular-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "sourcesanspro-regular";
+    src:
+        url("./font/sourcesanspro-regular-webfont.woff2") format("woff2"), 
+        url("./font/sourcesanspro-regular-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
 }
 
 body{
-    font-family: system-ui;
+    font-family: sourcesanspro-regular, system-ui, sans-serif;
+    background-color: black;
 }
 
+/******************************************************/
 /* Header */
+/******************************************************/
 h1{
     max-width: 1500px;
     margin: 8px auto 20px;
 
+    font-family: kaushanscript-regular, system-ui, sans-serif;
+    font-size: 300%;
+    color: #ddd;
     text-align: center;
     text-transform: uppercase;
+    text-decoration: underline;
+    text-decoration-style: double;
+    text-underline-offset: 8px;
 }
 
+/******************************************************/
 /*Main div*/
+/******************************************************/
 div.main{
     display: flex;
     flex-direction: row;
@@ -52,7 +80,9 @@ div.main{
     align-items: flex-start;
 }
 
+/******************************************************/
 /*Center div*/
+/******************************************************/
 div.center-content{
     width: 500px;
     max-width: 1000px;
@@ -60,23 +90,96 @@ div.center-content{
     height: min(calc(100vw * (1 / 3) * 1.48), 740px);
     /*This div is twice as big as the side div*/
     flex: 2 1 auto;
+
+    background-color: #f0f0f0;
 }
 
 div.center-content > *:first-child{
+    /*Vary margin with respect to viewport (higher if wider, vice versa)*/
     margin-top: clamp(var(--div-first-child-min-top-margin), 
         calc(15vw - 120px),
         var(--div-first-child-max-top-margin));
 }
 
-div.center-content > *:nth-last-child(n + 2){
+div.center-content > *:nth-last-child(n + 1){
     margin-bottom: 16px;
 }
 
 div.center-content > *{
-    padding: 4px 16px;
+    padding: 0px 24px;
 }
 
+/*Center div text before form*/
+div.center-content div.center-text{
+    width: 80%;
+
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+div.center-content div.center-text p em{
+    font-style: italic;
+}
+
+/*Adds some space after an em tag since italic font style affects the space before
+and after the content, which makes the space wider before and smaller (almost
+non-existent) after*/
+div.center-content div.center-text p em::after{
+    content: "";
+    margin-left: 0.18em;
+}
+
+div.center-content div.center-text > p:nth-child(n + 2){
+    margin-bottom: 16px;
+}
+
+/*Center div form*/
+div.center-content div.center-form{
+    background-color: #fff;
+
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+div.center-content div.center-form > p{
+    font-weight: bold;
+    font-size: 1.1rem;
+
+    margin-bottom: 16px;
+}
+
+div.center-content div.center-form form{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}
+
+/*Center div form submit*/
+div.center-submit button{
+    padding: 8px 32px;
+    margin-bottom: 24px;
+    
+    border: none;
+    background-color: #596D48;
+
+    border-radius: 4px;
+
+    font-family: inherit;
+    color: #eee;
+    font-weight: bolder;
+}
+
+div.center-submit p a:link,
+div.center-submit p a:visited{
+    color: #596D48;
+
+    font-weight: bold;
+}
+
+/******************************************************/
 /*Side div*/
+/******************************************************/
 div.side-content{
     width: 250px;
     max-width: 500px;
@@ -89,17 +192,49 @@ div.side-content{
     flex-direction: column;
     justify-content: space-between;
 
-
     background-image: url("./img/angkorWat.jpg");
     background-size: 100% 100%;
 }
 
 div.side-content > div.side-logo{
+    /*Same margin as center content div's first child*/
     margin-top: clamp(var(--div-first-child-min-top-margin), 
     calc(15vw - 120px),
     var(--div-first-child-max-top-margin));
+
+    background-color: #222;
+    opacity: 0.5;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.side-content > div.side-logo > img{
+    width: 80px;
+    height: calc(80px * 1.34);
+}
+div.side-content > div.side-logo > p{
+    margin-left: 30px;
+    font-size: 3rem;
 }
 
 div.side-content > p{
     text-align: center;
+    font-size: 0.8rem;
+}
+
+div.side-content > p > span{
+    text-decoration: underline;
+}
+
+div.side-content > div.side-logo > p,
+div.side-content > p,
+div.side-content > p > span > a:link,
+div.side-content > p > span > a:visited{
+    color: #eee;
+}
+
+div.side-content > p > span > a:hover{
+    font-size: 1.1rem;
 }
