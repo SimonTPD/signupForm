@@ -152,22 +152,77 @@ div.center-content div.center-form form{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    
+ 
+    width: 80%;
+}
+
+div.center-content div.center-form form p{
+    position: relative;
+
+    width: 40%; 
+    max-width: 250px;
+}
+
+div.center-content div.center-form form p:nth-last-child(n + 3){
+    margin-bottom: 32px;
+}
+
+div.center-content div.center-form form p:nth-child(2n + 1){
+    margin-right: 32px;
+}
+
+div.center-content div.center-form form p label{
+    position: absolute;
+    top: -1.3em;
+
+    font-size: 0.7rem;
+    text-transform: uppercase;
+}
+
+div.center-content div.center-form form p input{
+    appearance: none;
+
+    width: 100%;
+    height: 20px;
+
+    border: 1px solid #E5E7EB;
+    border-radius: 4px;
+}
+
+div.center-content div.center-form form p input:invalid{
+    border-color: red;
+}
+
+div.center-content div.center-form form p input:focus{
+    outline: none;
+
+    border-color: blue;
+
+    box-shadow: 1px 1px 2px grey;
 }
 
 /*Center div form submit*/
 div.center-submit button{
     padding: 8px 32px;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     
     border: none;
     background-color: #596D48;
-
     border-radius: 4px;
+
+    box-shadow: 2px 2px 2px grey;
 
     font-family: inherit;
     color: #eee;
     font-weight: bolder;
+}
+
+div.center-submit button:hover{
+    box-shadow: 2px 2px 4px grey;
+}
+
+div.center-submit button:active{
+    box-shadow: inset 0px 0px 8px #373f2f;
 }
 
 div.center-submit p a:link,
