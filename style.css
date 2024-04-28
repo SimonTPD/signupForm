@@ -57,6 +57,7 @@ body{
 /* Header */
 /******************************************************/
 h1{
+    /*Sum of the max widths of the center and side divs*/
     max-width: 1500px;
     margin: 8px auto 20px;
 
