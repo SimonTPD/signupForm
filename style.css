@@ -139,6 +139,8 @@ div.center-content div.center-form{
 
     padding-top: 16px;
     padding-bottom: 16px;
+
+    box-shadow: 0px 4px 4px grey;
 }
 
 div.center-content div.center-form > p{
@@ -193,6 +195,17 @@ div.center-content div.center-form form p input:invalid{
     border-color: red;
 }
 
+div.center-content div.center-form form p input:valid{
+    border-color: lightgreen;
+}
+
+/*Add this so that required empty inputs do NOT show a red border (because they
+match :invalid, the rule above) but the normal border*/
+div.center-content div.center-form form p input:placeholder-shown{
+    border-color: #E5E7EB;
+}
+
+
 div.center-content div.center-form form p input:focus{
     outline: none;
 
@@ -201,10 +214,35 @@ div.center-content div.center-form form p input:focus{
     box-shadow: 1px 1px 2px grey;
 }
 
+div.center-content div.center-form form p#phone-entry::after{
+    content: "format: 123-456-7890";
+
+    position: absolute;
+    top: 2.8em;
+
+    font-size: 0.6rem;
+    text-transform: uppercase;
+}
+
+div.center-content div.center-form form p#password-entry.passwords-do-not-match::after{
+    content: "Passwords do not match";
+    position: absolute;
+
+    top: 2.8em;
+
+    font-size: 0.6rem;
+    color: red;
+    text-transform: uppercase;
+}
+
+div.center-content div.center-form form p input[type="password"].passwords-do-not-match{
+    border-color: red;
+}
+
 /*Center div form submit*/
 div.center-submit button{
     padding: 8px 32px;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     
     border: none;
     background-color: #596D48;
@@ -215,6 +253,8 @@ div.center-submit button{
     font-family: inherit;
     color: #eee;
     font-weight: bolder;
+
+    position: relative;
 }
 
 div.center-submit button:hover{
@@ -223,6 +263,23 @@ div.center-submit button:hover{
 
 div.center-submit button:active{
     box-shadow: inset 0px 0px 8px #373f2f;
+}
+
+div.center-submit button:disabled{
+    background-color: gray;
+}
+
+div.center-submit button:disabled::after{
+    content: "Passwords need to match first";
+
+    position: absolute;
+    top: 3.2em;
+    right: -2em;
+
+    width: 200px;
+
+    color: red;
+    font-size: 0.7rem;
 }
 
 div.center-submit p a:link,
